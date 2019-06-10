@@ -1,8 +1,20 @@
 from selenium import webdriver
+import shutil
+import os
 import getpass
 import pywinauto
+
+#Copy the Cookies file from user directory to another directory and set it as the path for Google Chrome
+basePath = r"C:\Users\\" + getpass.getuser() + r"\AppData\Local\Google\Chrome"
+newPath = basePath+r"\Test User"
+os.mkdir(newPath)
+newPath = newPath + r"\Default"
+os.mkdir(newPath)
+shutil.copy(basePath + r"\User Data\Default\Cookies", newPath)
+
+#Run the chrome driver using the cookies copied previously
 options = webdriver.ChromeOptions()
-options.add_argument(r"user-data-dir=C:\Users\\" + getpass.getuser() + r"\AppData\Local\Google\Chrome\User Data")
+options.add_argument(r"user-data-dir=" + basePath + r"\Test User")
 driver = webdriver.Chrome(options=options)
 driver.get('https://people.zoho.com/visualbisolutions/zp#reimbursement/form/add-formLinkName:Reimbursement_Form')
 
