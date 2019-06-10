@@ -1,8 +1,12 @@
 from selenium import webdriver
 import getpass
 import pywinauto
+import shutil
+
+# Connecting to Selenium Web Driver
 options = webdriver.ChromeOptions()
-options.add_argument(r"user-data-dir=C:\Users\\" + getpass.getuser() + r"\AppData\Local\Google\Chrome\User Data")
+# options.add_argument(r"user-data-dir=C:\Users\\" + getpass.getuser() + r"\AppData\Local\Google\Chrome\User Data")
+options.add_argument(r"user-data-dir=C:\Users\\" + getpass.getuser() + r"\Automation")
 driver = webdriver.Chrome(options=options)
 driver.get('https://people.zoho.com/visualbisolutions/zp#reimbursement/form/add-formLinkName:Reimbursement_Form')
 
