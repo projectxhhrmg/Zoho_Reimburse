@@ -7,9 +7,11 @@ import pywinauto
 #Copy the Cookies file from user directory to another directory and set it as the path for Google Chrome
 basePath = r"C:\Users\\" + getpass.getuser() + r"\AppData\Local\Google\Chrome"
 newPath = basePath+r"\Test User"
-os.mkdir(newPath)
+if not os.path.exists(newPath):
+    os.makedir(newPath)
 newPath = newPath + r"\Default"
-os.mkdir(newPath)
+if not os.path.exists(newPath):
+    os.makedir(newPath)
 shutil.copy(basePath + r"\User Data\Default\Cookies", newPath)
 
 #Run the chrome driver using the cookies copied previously
